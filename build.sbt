@@ -33,7 +33,13 @@ lazy val core = project.in(file("core"))
 lazy val site = project.in(file("site"))
   .enablePlugins(TypelevelSitePlugin)
   .dependsOn(core)
-
+  .settings(
+    laikaTheme := tlSiteHelium.value.site
+      .topNavigationBar(
+        homeLink = laika.helium.config.IconLink.internal(laika.ast.Path.Root / "index.md", laika.helium.config.HeliumIcon.home)
+      )
+      .build
+  )
 
 val prometheusV = "1.4.3"
 val catsV = "2.9.0"
