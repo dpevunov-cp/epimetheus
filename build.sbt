@@ -10,7 +10,9 @@ ThisBuild / developers := List(
   tlGitHubDev("christopherdavenport", "Christopher Davenport")
 )
 
-ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("21"))
+// true by default, set to false to publish to s01.oss.sonatype.org
+ThisBuild / tlSonatypeUseLegacyHost := true
+ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
 ThisBuild / githubWorkflowSbtCommand := "./sbt"
 
 val Scala213 = "2.13.18"
@@ -31,13 +33,6 @@ lazy val core = project.in(file("core"))
 lazy val site = project.in(file("site"))
   .enablePlugins(TypelevelSitePlugin)
   .dependsOn(core)
-  .settings(
-    laikaTheme := tlSiteHelium.value.site
-      .topNavigationBar(
-        homeLink = laika.helium.config.IconLink.internal(laika.ast.Path.Root / "index.md", laika.helium.config.HeliumIcon.home)
-      )
-      .build
-  )
 
 
 val prometheusV = "1.4.3"
