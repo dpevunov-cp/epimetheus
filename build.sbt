@@ -15,7 +15,7 @@ ThisBuild / tlSonatypeUseLegacyHost := true
 ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
 ThisBuild / githubWorkflowSbtCommand := "./sbt"
 
-val Scala213 = "2.13.12"
+val Scala213 = "2.13.18"
 
 ThisBuild / crossScalaVersions := Seq("2.12.18", "3.3.1", Scala213)
 ThisBuild / scalaVersion := Scala213
